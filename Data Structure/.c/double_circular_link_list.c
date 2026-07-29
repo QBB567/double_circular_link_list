@@ -1,36 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define _CRT_SECURE_NO_WARNINGS 1
 
-//Ë«ÏòÑ­»·Á´±í
-
-typedef int DATA_T;//¶¨ÒåÊý¾ÝÀàÐÍ
-//´´½¨Êý¾Ý½Úµã½á¹¹Ìå
+//Ë«ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//æˆ‘æ˜¯djjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+//jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+//jjjjjjjjjjjjjj
+typedef int DATA_T;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Úµï¿½á¹¹ï¿½ï¿½
 typedef struct list_node
 {
     DATA_T data;
-    struct list_node* next;//Ç°ÇýÖ¸Õë
-    struct list_node* prev;//ºó¼ÌÖ¸Õë
+    struct list_node* next;//Ç°ï¿½ï¿½Ö¸ï¿½ï¿½
+    struct list_node* prev;//ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 }Node_t;
 
-//´´½¨Á´±í½á¹¹Ìå
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½
 typedef struct link_List
 {
-    int num;//½ÚµãÊýÁ¿
-    struct list_node* Head;//¼ÇÂ¼Ê×½ÚµãµØÖ·
-    struct list_node* Tail;//¼ÇÂ¼Î²½ÚµãµØÖ·
+    int num;//ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
+    struct list_node* Head;//ï¿½ï¿½Â¼ï¿½×½Úµï¿½ï¿½Ö·
+    struct list_node* Tail;//ï¿½ï¿½Â¼Î²ï¿½Úµï¿½ï¿½Ö·
 }List_t;
 
-//´´½¨¿ÕÁ´±í
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 List_t* double_circular_link_list_creat(void)
 {
-    //ÉêÇëÁ´±í¶ÑÄÚ´æ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½
     List_t* list=(List_t*)malloc(1*sizeof(list));
     if(list==NULL)
     {
         printf("list malloc fail\n");
         return NULL;
     }
-    //³õÊ¼»¯Á´±í
+    //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     list->Head=NULL;
     list->Tail=NULL;
     list->num=0;
@@ -38,17 +41,17 @@ List_t* double_circular_link_list_creat(void)
     return list;
 }
 
-//´´½¨Êý¾Ý½Úµã
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Úµï¿½
 Node_t* link_list_node_creat(DATA_T data)
 {
-    //ÉêÇë½Úµã¶ÑÄÚ´æ
+    //ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Ú´ï¿½
     Node_t* node=(Node_t*)malloc(1*sizeof(Node_t));
     if(node==NULL)
     {
         printf("node malloc fail\n");
         return NULL;
     }
-    //³õÊ¼»¯½Úµã
+    //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Úµï¿½
     node->data=data;
     node->next=NULL;
     node->prev=NULL;
@@ -56,18 +59,18 @@ Node_t* link_list_node_creat(DATA_T data)
     return node;
 }
 
-//Î²²åÊý¾Ý
+//Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int link_list_tailinsert(List_t*list,DATA_T data)
 {
-    //ÉêÇë½Úµã
+    //ï¿½ï¿½ï¿½ï¿½Úµï¿½
     Node_t* new_node=link_list_node_creat(data);
-    //ÉêÇëÊ§°Ü
+    //ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
     if(new_node==NULL)
     {
         printf("node creat fail\n");
         return 0;
     }
-    //ÅÐ¶ÏÊÇ·ñÎª¿ÕÁ´±í
+    //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     if(list->num==0)
     {
         list->Head=new_node;
@@ -76,29 +79,29 @@ int link_list_tailinsert(List_t*list,DATA_T data)
     }
     else
     {
-        list->Tail->next=new_node;//Î²½ÚµãµÄÏÂÒ»¸ö½ÚµãÖ¸ÏòÐÂ½Úµã
-        new_node->prev=list->Tail;//ÐÂ½ÚµãµÄÇ°Ò»¸ö½ÚµãÖ¸ÏòÎ²½Úµã
-        list->Tail=new_node;//Î²½ÚµãÖ¸ÏòÐÂ½Úµã
-        new_node->next=list->Head;//ÐÂ½ÚµãµÄÏÂÒ»¸öµØÖ·Ö¸ÏòÊ×½Úµã
+        list->Tail->next=new_node;//Î²ï¿½Úµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½Ö¸ï¿½ï¿½ï¿½Â½Úµï¿½
+        new_node->prev=list->Tail;//ï¿½Â½Úµï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½Úµï¿½Ö¸ï¿½ï¿½Î²ï¿½Úµï¿½
+        list->Tail=new_node;//Î²ï¿½Úµï¿½Ö¸ï¿½ï¿½ï¿½Â½Úµï¿½
+        new_node->next=list->Head;//ï¿½Â½Úµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö·Ö¸ï¿½ï¿½ï¿½×½Úµï¿½
     }
     list->num++;
 
     return 1;
 }
 
-//Í·²åÊý¾Ý
+//Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int link_list_Headinsert(List_t*list,DATA_T data)
 {
-    //ÉêÇë½Úµã
+    //ï¿½ï¿½ï¿½ï¿½Úµï¿½
     Node_t* new_node=link_list_node_creat(data);
-    //ÉêÇëÊ§°Ü
+    //ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
     if(new_node==NULL)
     {
         printf("node creat fail\n");
         return 0;
     }
-    //ÅÐ¶ÏÊÇ·ñÎª¿ÕÁ´±í
-    //¿Õ±í²åÈë
+    //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //ï¿½Õ±ï¿½ï¿½ï¿½ï¿½ï¿½
     if(list->num==0)
     {
         list->Head=new_node;
@@ -107,25 +110,25 @@ int link_list_Headinsert(List_t*list,DATA_T data)
     }
     else
     {
-        list->Head->prev=new_node;//Ê×½ÚµãµÄºó¼ÌÖ¸ÕëÖ¸ÏòÐÂ½Úµã
-        new_node->next=list->Head;//ÐÂ½ÚµãµÄÇ°ÇýÖ¸ÕëÖ¸ÏòÊ×½Úµã
-        list->Head=new_node;//Ê×½ÚµãÖ¸ÏòÐÂ½Úµã
-        list->Tail->next=list->Head;//Î²½ÚµãµÄÏÂÒ»¸ö½ÚµãÖ¸ÏòÊ×½Úµã
+        list->Head->prev=new_node;//ï¿½×½Úµï¿½Äºï¿½ï¿½Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Â½Úµï¿½
+        new_node->next=list->Head;//ï¿½Â½Úµï¿½ï¿½Ç°ï¿½ï¿½Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½×½Úµï¿½
+        list->Head=new_node;//ï¿½×½Úµï¿½Ö¸ï¿½ï¿½ï¿½Â½Úµï¿½
+        list->Tail->next=list->Head;//Î²ï¿½Úµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½Ö¸ï¿½ï¿½ï¿½×½Úµï¿½
     }
     list->num++;
     return 1;
 }
 
-//É¾³ýÊý¾Ý£¬Í·É¾£¬Î²É¾£¬ÖÐ¼äÉ¾³ý
+//É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½Í·É¾ï¿½ï¿½Î²É¾ï¿½ï¿½ï¿½Ð¼ï¿½É¾ï¿½ï¿½
 int link_list_DelNode(List_t*list,DATA_T data)
 {
-    //ÅÐ¶ÏÁ´±íÊÇ·ñÎª¿Õ
+    //ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½
     if(list->num==0)
     {
         printf("list is empty\n");
         return 0;
     }
-    //ÕÒµ½É¾³ý½ÚµãµÄÎ»ÖÃ
+    //ï¿½Òµï¿½É¾ï¿½ï¿½ï¿½Úµï¿½ï¿½Î»ï¿½ï¿½
     Node_t*del_ndoe=list->Head;
     while (1)
     {
@@ -140,7 +143,7 @@ int link_list_DelNode(List_t*list,DATA_T data)
             return 0;
         }
     }
-    //ÅÐ¶ÏÕÒµ½µÄÎ»ÖÃÊÇÊ×½Úµã»¹ÊÇÎ²½Úµã
+    //ï¿½Ð¶ï¿½ï¿½Òµï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½×½Úµã»¹ï¿½ï¿½Î²ï¿½Úµï¿½
     //Í·É¾
     if(del_ndoe==list->Head)
     {
@@ -152,11 +155,11 @@ int link_list_DelNode(List_t*list,DATA_T data)
     //Î²É¾
     else if(del_ndoe==list->Tail)
     {
-        del_ndoe->prev->next=list->Head;//É¾³ý½ÚµãµÄÇ°Ò»¸ö½ÚµãµÄÇ°ÇýÖ¸ÕëÖ¸ÏòÊ×½Úµã
-        list->Tail=del_ndoe->prev;//Î²½ÚµãÖ¸ÏòÉ¾³ý½ÚµãµÄÇ°Ò»¸ö½Úµã
-        del_ndoe->prev=NULL;//É¾³ý½ÚµãµÄºó¼ÌÖ¸ÕëÖ¸Ïò¿Õ
+        del_ndoe->prev->next=list->Head;//É¾ï¿½ï¿½ï¿½Úµï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½Úµï¿½ï¿½Ç°ï¿½ï¿½Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½×½Úµï¿½
+        list->Tail=del_ndoe->prev;//Î²ï¿½Úµï¿½Ö¸ï¿½ï¿½É¾ï¿½ï¿½ï¿½Úµï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½Úµï¿½
+        del_ndoe->prev=NULL;//É¾ï¿½ï¿½ï¿½Úµï¿½Äºï¿½ï¿½Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½
     }
-    //ÖÐ¼äÉ¾³ý
+    //ï¿½Ð¼ï¿½É¾ï¿½ï¿½
     else
     {
         del_ndoe->prev->next=del_ndoe->next;
@@ -169,12 +172,12 @@ int link_list_DelNode(List_t*list,DATA_T data)
     
 }
 
-//²éÕÒ½Úµã
+//ï¿½ï¿½ï¿½Ò½Úµï¿½
 int link_list_FindNode(List_t*list,DATA_T data)
 {
     Node_t*temp=list->Head;
     int i=1;
-    //ÅÐ¶ÏÁ´±íÊÇ·ñÎª¿Õ
+    //ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½
     if(list->num==0)
     {
         printf("list is empty\n");
@@ -184,7 +187,7 @@ int link_list_FindNode(List_t*list,DATA_T data)
     {
         if(temp->data==data)
         {
-            printf("Êý¾Ý%dÔÚµÚ%d¸öÎ»ÖÃ\n",temp->data,i);
+            printf("ï¿½ï¿½ï¿½ï¿½%dï¿½Úµï¿½%dï¿½ï¿½Î»ï¿½ï¿½\n",temp->data,i);
             return 1;
         }
         temp=temp->next;
@@ -196,11 +199,11 @@ int link_list_FindNode(List_t*list,DATA_T data)
     return 0;
 }
 
-//ÐÞ¸ÄÊý¾Ý
+//ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½
 int link_list_ChangeNode(List_t*list,DATA_T data,DATA_T change_data)
 {
     Node_t*temp=list->Head;
-    //ÅÐ¶ÏÁ´±íÊÇ·ñÎª¿Õ
+    //ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½
     if(list->num==0)
     {
         printf("list is empty\n");
@@ -221,7 +224,7 @@ int link_list_ChangeNode(List_t*list,DATA_T data,DATA_T change_data)
     return 0;
 }
 
-//´òÓ¡Á´±í
+//ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½
 int link_list_print(List_t*list)
 {
     if(list->num==0)
@@ -239,51 +242,51 @@ int link_list_print(List_t*list)
     printf("\n");
 }
 
-//Ë«ÏòÑ­»·Á´±í²Ù×÷½çÃæ
+//Ë«ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int ui(List_t* list)
 {
-    int cmd;//ÊäÈëÃüÁî
+    int cmd;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     int val;
     int data;
     while (1)
     {
-        printf("--------Ë«ÏòÑ­»·Á´±í--------\n");
-        printf("1.Í·²åÊý¾Ý\n");
-        printf("2.Î²²åÊý¾Ý\n");
-        printf("3.É¾³ýÊäÈëµÄÊý¾Ý\n");
-        printf("4.ÐÞ¸ÄÊý¾Ý\n");
-        printf("5.²éÕÒÊý¾Ý\n");
+        printf("--------Ë«ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--------\n");
+        printf("1.Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
+        printf("2.Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
+        printf("3.É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
+        printf("4.ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½\n");
+        printf("5.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
         printf("----------------------\n");
 
         scanf("%d",&cmd);
         switch(cmd)
         {
-            //Í·²åÊý¾Ý
+            //Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             case 1:
                     scanf("%d",&val);
                     link_list_Headinsert(list,val);
                     link_list_print(list);
                     break;
-            //Î²²åÊý¾Ý
+            //Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             case 2:
                     scanf("%d",&val);
                     link_list_tailinsert(list,val);
                     link_list_print(list);
                     break;
-            //É¾³ýÊý¾Ý
+            //É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             case 3:
                     scanf("%d",&val);
                     link_list_DelNode(list,val);
                     link_list_print(list);
                     break;
-            //ÐÞ¸ÄÊý¾Ý
+            //ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½
             case 4:
                     scanf("%d",&val);
                     scanf("%d",&data);
                     link_list_ChangeNode(list,val,data);
                     link_list_print(list);
                     break;
-            //²éÕÒÊý¾Ý
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             case 5:
                     scanf("%d",&val);
                     link_list_FindNode(list,val);
@@ -297,7 +300,7 @@ int ui(List_t* list)
 
 int main()
 {
-    //´´½¨¿ÕÁ´±í
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     List_t* list=double_circular_link_list_creat();
     if(list==NULL)
     {
